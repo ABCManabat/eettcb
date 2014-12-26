@@ -36,9 +36,14 @@
 		<link rel="stylesheet" href="css/crosspromo.css">
 		<script src="js/pubads_impl_49.js" type="text/javascript" async=""></script>
 		<script src="js/osd.js" type="text/javascript"></script>
+		<script type="text/javascript">
+    function didLoad() {
+        window.location.href="weiyou://didLoad"  // by decamincow
+    }
+</script>
 	</head>
 	
-	<body class="crosspromo-thin crosspromo-visible">
+	<body class="crosspromo-thin crosspromo-visible" onLoad="didLoad()">
 		<div id="game-table">
 			<div id="game-cell">
 				<div style="width: 272px; height: 408px;" id="viewport">
