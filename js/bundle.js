@@ -4280,7 +4280,7 @@ Game.prototype = {
 	},
     end : function(score){
  
-        window.location.href="objc://"+"showAd"; // by michael
+        // window.location.href="objc://"+"showAd"; // by michael
  
 		// Cross promo
 		if(window.crossPromo){
