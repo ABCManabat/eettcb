@@ -4069,6 +4069,7 @@ DOM.on(window,'load',function(){
 });
 
 function Game(){
+    var temp; //decamincow
 	Game.instance = this;
 	window.G = this;
 	
@@ -4076,9 +4077,10 @@ function Game(){
     this.curOverlay = null;
 	
 	this.stage = new DisplayableContainer();
-    
+ 
 	this.highscore = parseInt(Util.storage.getItem(P.highscoreKey)) || 0;
 	if(location.search.indexOf('newgame') >= 0) this.highscore = 0;
+    window.location.href="weiyou://getData/karatecrush_hiScore/callbackHandler"; // by decamincow
 	
 	this.totalScore = parseInt(Util.storage.getItem(P.totalScoreKey)) || 0;
 	if(location.search.indexOf('newgame') >= 0) this.totalScore = 0;
@@ -4297,6 +4299,7 @@ Game.prototype = {
 		// Highscore
 		this.previousHighscore = this.highscore;
 		this.highscore = Math.max(score,this.highscore);
+        window.location.href="weiyou://putData/karatecrush_hiScore/" + this.highscore; // by decamincow
 		Util.storage.setItem(P.highscoreKey,this.highscore);
 		
 		// Total score
@@ -5981,3 +5984,14 @@ EndScreen.prototype = extendPrototype(Screen,{
 	}
 });
 })()
+ function callbackHandler(value) {//decamincow
+    //    alert("callbackHandlervalue=" + value );
+    
+    if(value == null && !isNaN(value)){
+        temp = 0;
+    }
+    if((value == null && isNaN(value)) || (isNaN(value) && value == "")){
+        temp = "0";
+    }
+    this.highscore = temp;
+}
